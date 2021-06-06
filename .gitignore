@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/.idea/
+/admin/admin.iml
+/admin/.dbdata/
