@@ -4,9 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: 'python manage.py runserver 0.0.0.0:8000'
+    command: 'python main.py'
     ports:
-      - 8000:8000 # localPort:dockerPort mapping
+      - 8001:5000 # localPort:dockerPort mapping
     volumes:
     - .:/app  # localPath: dockerPath mapping
     depends_on:
@@ -24,11 +24,11 @@ services:
     image: mysql:5.7.22
     restart: always
     environment:
-      MYSQL_DATABASE: ms_admin
+      MYSQL_DATABASE: ms_main
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - .dbdata:/var/lib/mysql # localDbData:dockerDbData path mapping
     ports:
-      - 33006:3306 # local db:docker db port mapping
+      - 33007:3306 # local db:docker db port mapping
