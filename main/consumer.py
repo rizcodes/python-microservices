@@ -33,7 +33,7 @@ def callback(ch, method, properties, body):
 
     if properties.content_type == 'created':
         dinosaur = Dinosaur(id=data.get('id', 'null'), name=data.get('name', 'null'),
-                            image=data.get('image', 'null'))
+                            image=data.get('image', 'null'), likes=data.get('likes', 0))
         db.session.add(dinosaur)
         db.session.commit()
         logger.debug(f'Dinosaur [{data["name"]}] added in DB')

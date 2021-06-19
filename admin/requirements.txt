@@ -5,3 +5,4 @@ djangorestframework==3.12.4
 mysqlclient==2.0.3
 pika==1.2.0
 drf_yasg==1.20.0
+PyYAML==5.4.1
