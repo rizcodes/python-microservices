@@ -1,9 +1,12 @@
 # Rabbit MQ service via cloudampq
 # Consumer
 import pika
+import json
 import logging
 import logging.config
 import yaml
+
+from main import Dinosaur, db
 
 # Logger
 with open('logger.yaml', 'r') as f:
@@ -25,7 +28,15 @@ channel.queue_declare(queue='main')
 
 # Event caller
 def callback(ch, method, properties, body):
-    logger.debug(f'MAIN: {body}')
+    data = json.loads(body)
+    logger.debug(f'AppMain: {data}')
+
+    if properties.content_type == 'created':
+        dinosaur = Dinosaur(id=data.get('id', 'null'), name=data.get('name', 'null'),
+                            image=data.get('image', 'null'))
+        db.session.add(dinosaur)
+        db.session.commit()
+        logger.debug(f'Dinosaur [{data["name"]}] added in DB')
 
 
 channel.basic_consume(queue='main', on_message_callback=callback, auto_ack=True)

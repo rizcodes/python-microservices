@@ -18,8 +18,8 @@ class DinosaurViewSet(viewsets.ReadOnlyModelViewSet):
         serializer = DinosaurSerializer(data=request.data)
         if serializer.is_valid():
             result = serializer.save()
-            response = {'success': True, 'data': DinosaurSerializer(result).data,
-                        'message': 'a new dinosaurs is added'}
-            publish('DinosaurCreated', serializer.data)
+            response = {'status': 'success', 'data': DinosaurSerializer(result).data,
+                        'message': 'A new Dinosaurs is added'}
+            publish('created', serializer.data)
             return Response(response, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
