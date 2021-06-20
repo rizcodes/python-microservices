@@ -12,16 +12,13 @@ import {Observable} from "rxjs";
 export class DinosaursComponent implements OnInit {
   dinosaurs: Array<Dinosaur>;
   errorMsg: String;
+
   constructor(private dinosaurService: DinosaurService) {
     this.getDinosaurs()
   }
 
   ngOnInit(): void {
   }
-
-  // getDinosaursMock(): void {
-  //   this.dinosaurs = this.dinosaurService.getDinosaursMock();
-  // }
 
   getDinosaurs(): void {
     this.dinosaurService.getDinosaursFromServer().subscribe(

@@ -1,11 +1,30 @@
-.list-dinosaurs {
-  font-size: medium;
-  font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.dinosaurs {
+  max-width: 300px;
+}
+
+.display-header{
   color: #336699;
+}
+
+.header-image {
+  background-image: url('https://images-na.ssl-images-amazon.com/images/I/71AsQxry5oL.png');
+  background-size: cover;
+}
+
+.likes.mat-button-base {
+  margin: 8px 8px 8px 0;
 }
 
 .error-message {
   font-family: Consolas, monaco, monospace;
   font-size: small;
-  color: darkblue;
+  font-style: italic;
+  color: gray;
+  padding-left: 750px;
 }

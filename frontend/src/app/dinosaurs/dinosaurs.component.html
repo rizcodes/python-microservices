@@ -1,8 +1,14 @@
-<h2>Dinosaur Details</h2>
-
-<option class="list-dinosaurs" *ngFor="let dinosaur of dinosaurs">
-  {{dinosaur.id}}, {{dinosaur.name}}, {{dinosaur.image}}, {{dinosaur.likes}}
-</option>
+<div class="card-wrapper">
+  <mat-card class="dinosaurs" *ngFor="let dinosaur of dinosaurs">
+    <mat-card-header class="display-header">
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>{{dinosaur.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{dinosaur.image}}" alt="{{dinosaur.name}}">
+    <mat-card-actions class="likes">
+      <button mat-stroked-button>Like</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
 
 <label class="error-message">{{errorMsg}}</label>
-
